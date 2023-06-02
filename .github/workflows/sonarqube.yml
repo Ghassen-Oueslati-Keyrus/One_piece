@@ -1,0 +1,31 @@
+name: SonarQube workflow
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  Quality-analysis:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: sqp_598c9e7fc60e5dee00f79c544533a081381d030d
+          SONAR_HOST_URL: http://localhost:9002
+        with:
+          projectBaseDir: ./
+          args: >
+            -Dsonar.php.binaries=**/*
+            -Dsonar.sources=**/*.php
+            -Dsonar.projectKey=one_piece
+            -Dsonar.projectName=one_piece
+            -Dsonar.host.url=http://localhost:9002
+            -Dsonar.login=sqp_598c9e7fc60e5dee00f79c544533a081381d030d
+
+
+
+
+   
