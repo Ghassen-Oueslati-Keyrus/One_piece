@@ -7,6 +7,8 @@ on:
 jobs:
   Quality-analysis:
     runs-on: self-hosted
+    container:
+      image: openjdk:11
     steps:
       - uses: actions/checkout@v2
         with:
